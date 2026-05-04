@@ -12,6 +12,7 @@ import { IslamScreen } from "@/components/screens/islam-screen";
 import { QuickDrawScreen } from "@/components/screens/quick-draw-screen";
 import { SearchResults } from "@/components/screens/search-results";
 import type { TabType } from "@/lib/data";
+import { initializeCapacitor, hapticLight } from "@/lib/capacitor";
 
 export default function FrontlinesFaithApp() {
   const [showDisclaimer, setShowDisclaimer] = useState(true);
@@ -19,8 +20,11 @@ export default function FrontlinesFaithApp() {
   const [searchQuery, setSearchQuery] = useState("");
   const [bookmarks, setBookmarks] = useState<Set<string>>(new Set());
 
-  // Check localStorage for disclaimer acceptance on mount
+  // Initialize Capacitor and check localStorage on mount
   useEffect(() => {
+    // Initialize native features if running in Capacitor
+    initializeCapacitor();
+    
     const accepted = localStorage.getItem("frontlinesfaith-disclaimer-accepted");
     if (accepted === "true") {
       setShowDisclaimer(false);
@@ -57,6 +61,7 @@ export default function FrontlinesFaithApp() {
   }, []);
 
   const handleTabChange = (tab: TabType) => {
+    hapticLight(); // Provide haptic feedback on native
     setActiveTab(tab);
     setSearchQuery(""); // Clear search when changing tabs
   };
