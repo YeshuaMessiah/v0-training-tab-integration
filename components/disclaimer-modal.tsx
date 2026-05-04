@@ -1,13 +1,16 @@
 "use client";
 
 import { ShieldLogoLarge } from "./shield-logo";
-import { Button } from "@/components/ui/button";
 
 interface DisclaimerModalProps {
   onAccept: () => void;
 }
 
 export function DisclaimerModal({ onAccept }: DisclaimerModalProps) {
+  const handleClick = () => {
+    onAccept();
+  };
+
   return (
     <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black/92 p-5">
       <div className="rounded-xl border border-primary bg-[var(--navy-2)] p-7 max-w-[340px] text-center">
@@ -27,12 +30,17 @@ export function DisclaimerModal({ onAccept }: DisclaimerModalProps) {
           This app equips Christians for respectful, scholarly dialogue. It is not designed to promote hatred toward Muslims — who are deeply loved by God and whom we are called to reach with grace and truth.
         </p>
         
-        <Button 
-          onClick={onAccept}
-          className="w-full bg-primary text-primary-foreground font-bold tracking-wider hover:bg-primary/90"
+        <button 
+          type="button"
+          onClick={handleClick}
+          onTouchEnd={(e) => {
+            e.preventDefault();
+            handleClick();
+          }}
+          className="w-full py-3 px-4 rounded-md bg-[var(--gold)] text-[var(--navy)] font-bold tracking-wider active:bg-[var(--gold-2)] cursor-pointer touch-manipulation"
         >
           I Understand — Enter
-        </Button>
+        </button>
       </div>
     </div>
   );
