@@ -1,0 +1,129 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* FrontlinesFaith Theme - Navy & Gold */
+  --navy: #0A1628;
+  --navy-2: #0f1e38;
+  --navy-3: #162440;
+  --gold: #C9A84C;
+  --gold-2: #e4c06b;
+  --crimson: #8B0000;
+  --crimson-2: #a50000;
+  --off-white: #f8f6f0;
+  --off-white-2: #ede8dc;
+  --text-primary: #f8f6f0;
+  --text-secondary: #c9c0a8;
+  --text-muted: #8a8070;
+  --accent-blue: #1a3a6b;
+  
+  --background: var(--navy);
+  --foreground: var(--text-primary);
+  --card: var(--navy-3);
+  --card-foreground: var(--text-primary);
+  --popover: var(--navy-2);
+  --popover-foreground: var(--text-primary);
+  --primary: var(--gold);
+  --primary-foreground: var(--navy);
+  --secondary: var(--navy-3);
+  --secondary-foreground: var(--text-primary);
+  --muted: var(--navy-2);
+  --muted-foreground: var(--text-muted);
+  --accent: var(--accent-blue);
+  --accent-foreground: var(--text-primary);
+  --destructive: var(--crimson);
+  --destructive-foreground: #ff9999;
+  --border: rgba(201, 168, 76, 0.2);
+  --input: rgba(255, 255, 255, 0.06);
+  --ring: var(--gold);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: var(--navy-2);
+  --sidebar-foreground: var(--text-primary);
+  --sidebar-primary: var(--gold);
+  --sidebar-primary-foreground: var(--navy);
+  --sidebar-accent: var(--navy-3);
+  --sidebar-accent-foreground: var(--text-primary);
+  --sidebar-border: rgba(201, 168, 76, 0.2);
+  --sidebar-ring: var(--gold);
+}
+
+/* Dark mode is the default for this app */
+.dark {
+  --background: var(--navy);
+  --foreground: var(--text-primary);
+}
+
+@theme inline {
+  --font-sans: var(--font-sans, 'Source Sans 3', system-ui, sans-serif);
+  --font-serif: var(--font-serif, 'Playfair Display', Georgia, serif);
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Safe area padding for iOS devices */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Prevent text selection on interactive elements */
+button, a {
+  -webkit-user-select: none;
+  user-select: none;
+}
