@@ -2,7 +2,7 @@
 
 import { useMemo } from "react";
 import { VERSES, DAILY_TOPICS, type TabType } from "@/lib/data";
-import { Shield, Sword, BookOpen, Building2, Target } from "lucide-react";
+import { Shield, Sword, BookOpen, Building2, Target, GraduationCap } from "lucide-react";
 
 interface HomeScreenProps {
   onNavigate: (tab: TabType) => void;
@@ -57,7 +57,7 @@ export function HomeScreen({ onNavigate }: HomeScreenProps) {
       </div>
 
       {/* Quick Navigation Grid */}
-      <div className="grid grid-cols-2 gap-2.5">
+      <div className="grid grid-cols-3 gap-2.5">
         <QuickButton
           icon={Shield}
           label="Defend"
@@ -67,7 +67,7 @@ export function HomeScreen({ onNavigate }: HomeScreenProps) {
         <QuickButton
           icon={Sword}
           label="Advance"
-          sublabel="Ask hard questions"
+          sublabel="Ask questions"
           onClick={() => onNavigate("advance")}
         />
         <QuickButton
@@ -79,20 +79,23 @@ export function HomeScreen({ onNavigate }: HomeScreenProps) {
         <QuickButton
           icon={Building2}
           label="Know Islam"
-          sublabel="Theology & terms"
+          sublabel="Theology"
           onClick={() => onNavigate("islam")}
         />
+        <QuickButton
+          icon={Target}
+          label="Quick Draw"
+          sublabel="One-liners"
+          onClick={() => onNavigate("quickdraw")}
+        />
+        <QuickButton
+          icon={GraduationCap}
+          label="Training"
+          sublabel="Quiz yourself"
+          onClick={() => onNavigate("training")}
+          highlight
+        />
       </div>
-
-      {/* Quick Draw Button */}
-      <button
-        onClick={() => onNavigate("quickdraw")}
-        className="w-full rounded-xl border border-border bg-card p-3.5 text-center hover:border-primary hover:bg-primary/5 transition-colors"
-      >
-        <Target className="h-6 w-6 mx-auto mb-1.5 text-primary" />
-        <div className="font-serif text-[13px] font-semibold text-primary">Quick Draw</div>
-        <div className="text-[11px] text-muted-foreground">One-liners for live conversation</div>
-      </button>
 
       {/* Motto Bar */}
       <div className="rounded-lg bg-primary/10 py-3 px-4 text-center">
@@ -109,17 +112,22 @@ interface QuickButtonProps {
   label: string;
   sublabel: string;
   onClick: () => void;
+  highlight?: boolean;
 }
 
-function QuickButton({ icon: Icon, label, sublabel, onClick }: QuickButtonProps) {
+function QuickButton({ icon: Icon, label, sublabel, onClick, highlight }: QuickButtonProps) {
   return (
     <button
       onClick={onClick}
-      className="rounded-xl border border-border bg-card p-3.5 text-center hover:border-primary hover:bg-primary/5 transition-colors"
+      className={`rounded-xl border p-3 text-center transition-colors ${
+        highlight 
+          ? "border-primary/50 bg-primary/10 hover:bg-primary/20" 
+          : "border-border bg-card hover:border-primary hover:bg-primary/5"
+      }`}
     >
-      <Icon className="h-6 w-6 mx-auto mb-1.5 text-primary" />
-      <div className="font-serif text-[13px] font-semibold text-primary">{label}</div>
-      <div className="text-[11px] text-muted-foreground">{sublabel}</div>
+      <Icon className={`h-5 w-5 mx-auto mb-1 ${highlight ? "text-primary" : "text-primary"}`} />
+      <div className="font-serif text-[12px] font-semibold text-primary">{label}</div>
+      <div className="text-[10px] text-muted-foreground leading-tight">{sublabel}</div>
     </button>
   );
 }
