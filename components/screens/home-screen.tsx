@@ -1,8 +1,8 @@
 "use client";
 
-import { useMemo } from "react";
-import { VERSES, DAILY_TOPICS, type TabType } from "@/lib/data";
-import { Shield, Sword, BookOpen, Building2, Target, GraduationCap } from "lucide-react";
+import { useMemo, useState, useEffect } from "react";
+import { VERSES, DAILY_TOPICS, TRAINING_LEVELS, type TabType } from "@/lib/data";
+import { Shield, Sword, BookOpen, Building2, Target, GraduationCap, Flame, ChevronRight } from "lucide-react";
 
 interface HomeScreenProps {
   onNavigate: (tab: TabType) => void;
