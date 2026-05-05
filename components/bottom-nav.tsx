@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Home, Shield, Sword, BookOpen, Building2, Target } from "lucide-react";
+import { Home, Shield, Sword, BookOpen, Building2, Target, GraduationCap } from "lucide-react";
 import type { TabType } from "@/lib/data";
 
 interface BottomNavProps {
@@ -15,7 +15,7 @@ const tabs: { id: TabType; label: string; icon: typeof Home }[] = [
   { id: "advance", label: "Advance", icon: Sword },
   { id: "scripture", label: "Scripture", icon: BookOpen },
   { id: "islam", label: "Know Islam", icon: Building2 },
-  { id: "quickdraw", label: "Quick Draw", icon: Target },
+  { id: "training", label: "Training", icon: GraduationCap },
 ];
 
 export function BottomNav({ activeTab, onTabChange }: BottomNavProps) {
