@@ -1,8 +1,9 @@
 "use client";
 
-import { useMemo, useState, useEffect } from "react";
-import { VERSES, DAILY_TOPICS, TRAINING_LEVELS, type TabType } from "@/lib/data";
-import { Shield, Sword, BookOpen, Building2, Target, GraduationCap, Flame, ChevronRight } from "lucide-react";
+import { useMemo } from "react";
+import { VERSES, DAILY_TOPICS, type TabType } from "@/lib/data";
+import { Shield, Sword, BookOpen, Building2, Target, GraduationCap } from "lucide-react";
+import { TrainingProgressCard } from "@/components/training-progress-card";
 
 interface HomeScreenProps {
   onNavigate: (tab: TabType) => void;
@@ -44,6 +45,9 @@ export function HomeScreen({ onNavigate }: HomeScreenProps) {
           </p>
         </div>
       </div>
+
+      {/* Training Progress Card — NEW */}
+      <TrainingProgressCard onNavigate={onNavigate} />
 
       {/* Daily Challenge */}
       <div className="rounded-xl border border-destructive/35 bg-destructive/15 p-3.5">
