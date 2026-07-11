@@ -532,7 +532,7 @@ export const QUICKDRAW: QuickDrawItem[] = [
   { cat: "LOVE", type: "defense", text: "'God demonstrates his love for us in this: While we were still sinners, Christ died for us.' (Romans 5:8). Where in the Quran does Allah die for you?" }
 ];
 
-export type TabType = "home" | "defend" | "advance" | "scripture" | "islam" | "quickdraw" | "training";
+export type TabType = "home" | "defend" | "advance" | "scripture" | "islam" | "quickdraw" | "training" | "reference";
 
 // ─────────────────────────────────────────────
 // TRAINING ACADEMY DATA
@@ -824,4 +824,693 @@ export const TRAINING_LEVELS = [
   {xp: 1200, title: 'Apologist'},
   {xp: 1800, title: 'Scholar'},
   {xp: 2500, title: 'Master'},
+];
+
+// ─────────────────────────────────────────────
+// COMPLETE APOLOGETICS REFERENCE LIBRARY
+// Source: FrontlinesFaith Complete Apologetics Reference (research notes)
+// ─────────────────────────────────────────────
+
+export interface ReferenceEntry {
+  ref?: string;   // citation, e.g. "Surah 86.6-7", "Bukhari 2419", scripture ref
+  label?: string; // optional short heading for the entry
+  text: string;   // the fact / explanation
+}
+
+export interface ReferenceSubsection {
+  heading?: string;
+  entries: ReferenceEntry[];
+}
+
+export interface ReferenceSection {
+  id: string;
+  num: number;
+  title: string;
+  desc?: string;
+  // 'advance' = challenging Islamic claims, 'defend' = defending the Christian faith
+  side: "advance" | "defend";
+  subsections: ReferenceSubsection[];
+}
+
+export const REFERENCE_DATA: ReferenceSection[] = [
+  {
+    id: "quran-errors",
+    num: 1,
+    title: "Quran Errors",
+    desc: "Factual errors documented within the Quran, with explanations of why they constitute errors.",
+    side: "advance",
+    subsections: [
+      {
+        entries: [
+          { ref: "Surah 86.6-7", text: "Semen comes from between the ribs & backbone. This is incorrect anatomy, copied from ancient Greeks (i.e., from Plato & Hippocrates)." },
+          { ref: "Surah 23.14", text: "Sperm made into a clot of blood, then a lump (fetus), then bones, then clothed with flesh. Sperm does not become a clot then a lump; flesh & bones form simultaneously (not sequentially)." },
+          { ref: "Surah 25.53", text: "There is an impassible barrier between fresh & salt water. Fresh & salt water mix in estuaries." },
+          { ref: "Surah 9.30 & Bukhari 4581", text: "Jews worship Ezra as the Son of Allah. Jews never believed this." },
+          { ref: "Surah 66.12 & 19.28", text: "Mary (Mother of Jesus) is called daughter of Imran & sister of Aaron. Confuses her with Miriam sister of Moses, who existed >1000 years earlier." },
+          { ref: "Surah 12.20-21", text: "Joseph in ancient Egypt was sold for a few Dirhams. No coined currency in ancient Egypt." },
+          { ref: "Surah 20.71", text: "Pharaoh threatened to crucify Moses. Crucifixion didn't exist in ancient Egypt." },
+          { ref: "Surah 34.10-11", text: "David makes chainmail (~1000BC). Chainmail didn't exist until 500BC." },
+          { ref: "Surah 18.96-97", text: "David built a giant metal wall between two mountains to deter Gog/Magog. No evidence of this giant metal wall." },
+          { ref: "Surah 71.19, 20.53, 36.38 & Sahih Muslim 758", text: "The earth is flat like a carpet, sun has a stopping point & Allah descends every night then ascends at day. Muhammad thought the earth was flat." },
+          { ref: "Surah 4.11-12", text: "Inheritance law totals 1.125 shares (2/3 for daughter + 1/6 for each parent + 1/8 for wife). Mathematic error; Companions invented awl rule to fix this." },
+          { ref: "Surah 4.11", text: "Inheritance law in Arabic says 'more than 2' daughters inherit 2/3. However, it means to say '2 or more' daughters. This leaves no inheritance rule for exactly 2 daughters. Quran.com tries to cover this up in the English. Linguistic error." },
+          { ref: "Surah 2.125-126 & 14.35", text: "Mecca described as a secure city & centre of worship built by Abraham. No evidence of Mecca before 5th century." },
+          { ref: "Surah 53.1 & Bukhari 4864", text: "Muhammad split the moon. Provably false; no witnesses, no cosmological evidence." },
+          { ref: "Surah 41.10-12", text: "Stars were made after earth. Wrong." },
+          { ref: "Surah 5.116", text: "Quran says the Trinity is Allah, Jesus and Mary. Wrong. No Christians believe this. Muslims appeal to Collyridians, but they were a tiny heretical group, who died out 200 years before Muhammad." },
+          { ref: "Surah 3.68 & 7.143", text: "Abraham & Moses were Muslim. Wrong; they believed in altar sacrifice, priesthood, eternal Sabbath/Law, Holy Spirit, that God enters creation, and called God 'Father'." },
+          { ref: "Surah 61.6 & 61.14", text: "Jesus was Muslim, foretold Muhammad & the disciples were Muslim. Wrong; Jesus called Himself the only begotten Son of God; no evidence He foretold of Muhammad; no early Christian groups were compatible with Islam." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "quran-contradictions",
+    num: 2,
+    title: "Quran Contradictions",
+    desc: "Internal contradictions within the Quran — where one verse directly contradicts another.",
+    side: "advance",
+    subsections: [
+      {
+        entries: [
+          { text: "Surah 4.48: Allah does not forgive Shirk — Surah 39.53: Allah forgives all sin." },
+          { text: "Surah 6.51: Intercession is impermissible — Surah 20.109 & Sunan Majah 4308: intercession is allowed." },
+          { text: "Surah 2.48: no soul bears the burden of another — Surah 16.25: false teachers bear the burden of those they mislead; Sahih Muslim 2767: Christians & Jews bear the sins of Muslims." },
+          { text: "Surah 2.256: no compulsion in religion — Surah 9.29-30: fight those who do not adopt Islam & who say Allah has a Son; Nasai 4059: kill those who leave Islam." },
+          { text: "Surah 6.103 & 42.11: Allah cannot be seen — Surah 75.23 & Bukhari 7439: Allah will be seen & 'recognised' by his shin." },
+          { text: "Surah 4.176: Inheritance law (one sister gets 1/3, two sisters get 2/3) — Surah 4.12: inheritance law (one sister gets 1/6, two sisters get 1/3)." },
+          { text: "Surah 11.1 & 16.89: the Quran is a clear & detailed explanation of all things — Surah 3.7: the Quran has un-specific verses & requires Tafsir/Hadith." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "islamic-dilemma",
+    num: 3,
+    title: "The Islamic Dilemma",
+    desc: "The Quran explicitly confirms Torah / Gospel authority 22 times.",
+    side: "advance",
+    subsections: [
+      {
+        heading: "The Quran Explicitly Confirms Torah / Gospel Authority",
+        entries: [
+          { ref: "2.51", text: "Torah is the Criterion (Furqan)." },
+          { ref: "3.3", text: "Confirms Torah / Gospel are divine revelation." },
+          { ref: "4.136", text: "Believe in Allah, Muhammad, Quran AND the prior Scripture." },
+          { ref: "5.43", text: "Torah is the judgement of Allah." },
+          { ref: "5.46", text: "Confirms the Torah/Gospel are an authority." },
+          { ref: "5.47", text: "Judge by the Gospel." },
+          { ref: "5.48", text: "Quran 'guards' the Torah / Gospel; Allah willed the differences." },
+          { ref: "5.66", text: "Uphold Torah and Gospel." },
+          { ref: "5.68", text: "Uphold Torah and Gospel." },
+          { ref: "29.46", text: "Confirms the Books revealed to Jews / Christians." },
+        ],
+      },
+      {
+        heading: "Quran Confirms the Torah / Gospel is WITH THEM",
+        entries: [
+          { ref: "2.41", text: "Confirms what is WITH the people of the Book." },
+          { ref: "2.91", text: "Confirms what is WITH the people of the Book." },
+          { ref: "2.101", text: "Confirms what is WITH the people of the Book." },
+          { ref: "2.113", text: "Christians & Jews both recite the Scripture." },
+          { ref: "5.43", text: "They 'HAVE' the Torah and should judge by it." },
+          { ref: "5.48", text: "Confirms the Scriptures IN THEIR HANDS (ma bayna yadayhi)." },
+          { ref: "Tirmidhi 2653", text: "The Torah / Gospel are WITH THEM." },
+        ],
+      },
+      {
+        heading: "Quran Says to Validate It Using the Torah / Gospel",
+        entries: [
+          { ref: "7.157", text: "Validate Quran using Torah/Gospel WITH THEM." },
+          { ref: "10.94", text: "Validate Quran by READING Torah/Gospel WITH THEM." },
+        ],
+      },
+      {
+        heading: "The Torah / Gospel Are Preserved",
+        entries: [
+          { ref: "2.85", text: "People of the Book MUST believe in the WHOLE Book, not just parts." },
+          { ref: "2.121", text: "Their Book is recited with true recital, so is preserved. Ibn Kathir & Quran.com confirm this refers to Torah/Gospel." },
+          { ref: "6.34", text: "Allah's revelations can't be altered." },
+        ],
+      },
+      {
+        heading: "Not a Single Verse Says the Torah or Gospel Are Textually Corrupt",
+        entries: [
+          { ref: "Ibn Kathir (5.43), Bukhari 6841", text: "Jew hid verse about stoning with his hand; no textual corruption." },
+          { ref: "2.79", text: "Condemns those who write something and claim it's Scripture; never says Torah (2.80 quotes Talmud). Ibn Kathir confirms it's about a different book, not Torah." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "quran-not-preserved",
+    num: 4,
+    title: "Quran Not Preserved",
+    desc: "Evidence from Islamic primary sources that the Quran was not perfectly preserved.",
+    side: "advance",
+    subsections: [
+      {
+        entries: [
+          { ref: "Bukhari 2419", text: "Muhammad gave 7 versions of the Quran; Companions (from same tribe with same dialect) fighting over different recitations." },
+          { ref: "Bukhari 5038-39", text: "Muhammad & Companions forgot verses." },
+          { ref: "Sahih Muslim 1050", text: "Companions lost 2 entire Surahs." },
+          { ref: "Sahih Muslim 1691a", text: "Stoning verse lost, even though the Companions practiced & recited it after Muhammad's death." },
+          { ref: "Muwafaqatu Al-Khubr Al-Khabr (Hasan)", text: "Surah Azhab lost >200 verses." },
+          { ref: "Sahih Muslim 824a", text: "Companions rejected an additional verse introduced by the Syrians 'wa ma khalaqa'; this addition is present in the Quran today." },
+          { ref: "Bukhari 4986 & Kitab al-masahif (p.23)", text: "Much of the Quran was lost at the battle of Yamama." },
+          { ref: "Bukhari 4784", text: "Uthman sent Zaid to gather Quran manuscripts off the battlefield; he notes a verse from Surah Ahzab was found with just one dead man (rendering accuracy check impossible)." },
+          { ref: "Bukhari 4987", text: "Syria & Iraq fighting over different recitations; so Uthman (and 4 scribes) re-wrote Quran & burnt all the manuscripts (rendering accuracy check impossible)." },
+          { ref: "Bukhari 4999", text: "Ibn Masud & Ubayy were Muhammad's 2 best reciters; none of the top 4 reciters were at Uthman's council." },
+          { ref: "Bukhari 5005", text: "Ubayy rejected Uthman's Quran, as it omitted some of what Muhammad recited. Ubayy's had 116 Surahs (+2)." },
+          { ref: "Tirmidhi 3104", text: "Ibn Masud rejected Uthman's Quran, ordering his followers to hide his version. Masud's had 111 Surahs (-3), different legal rulings & Surah order. Masud's persisted for >100 years as the dominant reading in Kufa." },
+          { ref: "Surah 2.106 & 16.101", text: "Abrogation doesn't work as an excuse, as it requires a verse to be replaced, not simply lost. Also makes no sense for Allah to arbitrarily abrogate verses, only during Muhammad's 20 years as a prophet — it's ad-hoc & contradicts Allah's omniscience." },
+          { ref: "Sources", text: "1. Anthony S. Two lost Surahs of the Quran. 2019. | 2. Harvey R. The Legal Epistemology of Qur'anic Variants: The Readings of Ibn Mas'ud. 2017." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "quran-reading-variants",
+    num: 5,
+    title: "Quran Reading Variants",
+    desc: "30 permissible readings; >30,000 differences (Van Der Walt, A. Unveiling Doubts: Critical Analysis of the Qur'an's Preserved Text. 2023).",
+    side: "advance",
+    subsections: [
+      {
+        heading: "Examples of Quran Reading Variants",
+        entries: [
+          { ref: "Surah 37.12", text: "Hafs ('Allah wonders...') vs. Khalaf ('Muhammad wonders...'). Contradiction (noted by Qurtubi)." },
+          { ref: "Surah 11.81", text: "Hafs (Lut leaves his wife) vs. al-Bazzi (Lut brings his wife). Contradiction (noted by Ibn Kathir & Al-Jalalayn)." },
+          { ref: "Surah 2.184", text: "Hafs (missed fast = feed 1 poor person) vs. Warsh (missed fast = feed multiple poor people). Contradiction." },
+          { ref: "Surah 57.24", text: "Hafs vs Warsh (the word 'He is', missing from Warsh). Entire missing word." },
+          { ref: "Surah 3.146", text: "Hafs (many prophets fought) vs. Warsh (many prophets were killed). Different meaning (noted by Al-Jalalayn)." },
+          { ref: "Surah 10.16", text: "Hafs (Allah would NOT have made it known) vs. al-Bazzi (Allah would have made it known). Contradiction (noted by Al-Jalalayn)." },
+        ],
+      },
+      {
+        heading: "Poor Manuscript Evidence",
+        entries: [
+          { ref: "Birmingham (570-620AD)", text: "Only 4 pages, exclusively Christian apocryphal stories; contains non-canonical variants." },
+          { ref: "Sana'a lower layer (~650AD)", text: "Significant non-canonical variants." },
+          { ref: "Sana'a upper layer (~700AD)", text: "Written over the lower layer; 12 non-canonical variants." },
+          { ref: "Codex Mashad (~800AD)", text: "Significant variation vs Uthmanic text." },
+          { ref: "Codex Parisino Petropolitanus (~800AD)", text: "Only 45% of the Quran and contains non-canonical variants." },
+          { ref: "Topkapi (~950AD)", text: ">2200 differences, amends, scribal errors, and contains non-canonical variants." },
+          { ref: "Samarkand (775-995AD)", text: "Late dating, has non-canonical variants, edits and later additions." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "history-of-quran",
+    num: 6,
+    title: "Brief History of the Quran",
+    desc: "Showing human fingerprints all over its canonisation.",
+    side: "advance",
+    subsections: [
+      {
+        entries: [
+          { ref: "610-630AD", text: "Muhammad reveals 7 recitations; Companions not tracking what was abrogated; verses forgotten; fighting over recitations." },
+          { ref: "630-650AD", text: "Battle of Yamama; lost Surahs/verses; Muslims fighting over Quran variants; some added verses." },
+          { ref: "650AD", text: "Uthman standardises the Quran & burns all variants; Ubayy and Masud resist." },
+          { ref: "650-750AD", text: "Masud's Qurans persist in Kufa for 100 years as the dominant reading." },
+          { ref: "685AD", text: "Abd al-Malik & al-Hajjaj re-standardise the Quran, violently enforce Uthman's version; suppress Ubayy and Masud's versions; add vowels to the text; burn all variants." },
+          { ref: "900AD", text: "Ibn Mujahid re-standardised Quran, chose 7 readings (Qiraat) & executed those with non-orthodox commentary (Tafsir)." },
+          { ref: "1400AD", text: "Qiraat count expanded to 10." },
+          { ref: "1600AD", text: "Qiraat count expanded to 14." },
+          { ref: "1924AD", text: "Egyptian State standardised Hafs variant (favoured by the Ottomans); the dominant reading today." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "islam-lacks-continuity",
+    num: 7,
+    title: "Islam Lacks Continuity With the Abrahamic Faith",
+    side: "advance",
+    subsections: [
+      {
+        entries: [
+          { ref: "Exodus 3.14; Deut 6.4; Deut 32.6", text: "I AM (Exodus 3.14); YHWH (Deuteronomy 6.4); Father (Deuteronomy 32.6) — these names of God are all missing from Allah's 99 eternal names." },
+          { ref: "Deut 4.2; Num 15.15; Ps 111.7-8", text: "God's Old Covenant is eternal, including for Sojourners — Islam simply abrogated this, leaving the Old Covenant unresolved." },
+          { ref: "Lev 16.31; Lev 24.8; Ex 31.16", text: "Sabbath is an eternal statute — Islam simply abrogated this, leaving the Sabbath unresolved." },
+          { ref: "Lev 4.25; Lev 16.32-34; Lev 17.11", text: "Sacrificial altar, eternal priesthood, blood atonement — Islam totally ignores altar & priesthood." },
+          { ref: "Gen 3.8; 18.22; 32.28; Ex 3.4; 24.10; 33.11", text: "God manifests in creation as Theophanies — Islam rejects this." },
+          { ref: "Gen 1.2; Isa 48.16-17; Isa 63.11; Ezek 2", text: "The Holy Spirit — Islam rejects that God has a Spirit." },
+          { ref: "Gen 17.19; Deut 7.6; Deut 18.15; Isa 41.8", text: "Prophets must be Israelite — Muhammad (an Ishmaelite) breaks this rule." },
+          { ref: "Historical inconsistencies", text: "Mecca, the Kaaba, the Islamic 'Tawrah' & 'Injil', any group compatible with Islam pre-Muhammad lack any historical evidence." },
+          { ref: "Deut 13.1-4", text: "Reject any Prophet that tells you to follow other gods or commandments — Christians & Jews are obligated to reject Islam." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "debunking-scientific-miracles",
+    num: 8,
+    title: "Debunking Quran Scientific Miracles",
+    desc: "Arabia was a direct neighbour of Greeks & Egyptians for centuries, long enough for ideas to cross-pollinate. They engaged in trade & Muhammad himself had direct contact with them.",
+    side: "advance",
+    subsections: [
+      {
+        entries: [
+          { ref: "Surah 10.5", text: "Moon reflects light — already known by the Greeks from 500BC." },
+          { ref: "Surah 21.30", text: "The Big Bang — verse simply says heavens & earth were once joined then separated; this isn't the big bang." },
+          { ref: "Surah 21.30", text: "All living things made from water — this was a very common idea among ancient agricultural civilisations." },
+          { ref: "Surah 21.32", text: "The earth's atmosphere — verse simply says the sky is a protective ceiling, not an atmosphere; earth having a roof/dome was a very common ancient belief." },
+          { ref: "Surah 86.2-3", text: "Pulsar star — verse simply calls a 'star' a 'night-comer' (per every translation, except Quran.com)." },
+          { ref: "Surah 57.25", text: "Iron came from space — all elements came from space; Egyptians, Indians, Greeks knew Iron came from space (meteorites)." },
+          { ref: "Surah 39.21", text: "The water cycle — verse simply says Allah sends rain, makes springs, produces crops. This is a simple observation. Greeks, Indians & Egyptians had a far superior understanding of the water cycle." },
+          { ref: "Surah 24.43", text: "Cloud formation — verse simply says Allah drives clouds, brings them together, makes them like mountains, makes them rain/hail. Again, just a simple observation." },
+          { ref: "Surah 23.12-14", text: "Embryology — verse says sperm lodges in a firm place, forms a clot, lump, bones, then clothed with flesh. This is vague & wrong. Sperm fertilises the egg, forms a zygote (group of cells), travels to the uterus, bones & flesh then form simultaneously (not sequentially)." },
+          { ref: "Surah 36.40", text: "The Sun and Moon orbit — ancients already knew about orbits. Quran only mentions the Sun & Moon orbiting, suggesting geocentric model; it claims the Sun cannot 'overtake' the moon, suggesting geocentric model. Tafsir from Qurtubi & Tabari interpret geocentric model." },
+          { ref: "Surah 25.53", text: "Salt & fresh water cannot mix — wrong, they mix in estuaries." },
+          { ref: "Surah 51.47", text: "Expanding universe — verse simply says Allah actively 'makes vast' or 'expands' heavens. Isaiah 40.22 also says God actively 'stretches' & 'spreads' out heavens (active verb). Very common ancient belief." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "debunking-prophecies",
+    num: 9,
+    title: "Debunking Muhammad's Prophecies",
+    side: "advance",
+    subsections: [
+      {
+        heading: "1. Riyad as-Salihin 60: Tall Buildings",
+        entries: [
+          { text: "Barefoot, naked, poor shepherds will compete in constructing tall buildings." },
+          { text: "Post-hoc (tall buildings already existed in 7th century); no timeframe given; non-specific (doesn't quantify 'tall'); fails all specific criteria (barefoot, naked, bedouin, shepherds); unimpressive (tall buildings over infinite timeframe highly probable)." },
+        ],
+      },
+      {
+        heading: "2. Quran 30.2-4: Romans Victory",
+        entries: [
+          { text: "Romans have been defeated in the nearest land. But after their defeat, they will be victorious within a few years [3-9 years]." },
+          { text: "Post-hoc — this verse was revealed after the Roman victory (Tirmidhi 3192). Timeframe failed — Romans lost to Persians in 613AD & won in 624AD on Day of Badr (Tirmidhi 3192) = 11 years. Non-specific — victory conditions & location not defined. Unimpressive — Romans retained 70% of their military after their defeat, the Persians overextended, a Roman victory was highly probable. Military predictions do not necessitate Divine inspiration." },
+        ],
+      },
+      {
+        heading: "3. Surah 48.27",
+        entries: [
+          { text: "Muhammad would enter Mecca peacefully — he 'foretold' this after a peace treaty was already made (ibn Kathir Tafsir); not impressive." },
+        ],
+      },
+      {
+        heading: "4. Surah 111.1-3",
+        entries: [
+          { text: "Muhammad predicted his uncle would never accept Islam — his uncle was a pagan religious zealot (ibn Kathir Tafsir); so this is a common sense statement." },
+        ],
+      },
+      {
+        heading: "5. Various Vague End Times Prophecies",
+        entries: [
+          { text: "Increased homosexuality, women working, usury, obesity etc — non-specific, no timeframe or location given. This is just a generic condemnation of behaviours that Muslims already condemned in the 7th century." },
+        ],
+      },
+      {
+        heading: "6. Bukhari 3618",
+        entries: [
+          { text: "Muhammad predicted when the Caesar of his time (Heraclius) died, there would be no more Caesars — wrong; Caesars continued for 800 years after this." },
+        ],
+      },
+      {
+        heading: "7. Tirmidhi 2239",
+        entries: [
+          { text: "Muhammad predicted Constantinople would fall at the coming of the last hour — wrong; Constantinople fell 600 years ago and still no last hour." },
+        ],
+      },
+      {
+        heading: "8. Sahih Muslim 2952",
+        entries: [
+          { text: "Muhammad predicted the last hour would come before a young boy in his presence would grow old — wrong; he died 1400 years ago, and still no last hour." },
+        ],
+      },
+      {
+        heading: "9. Bukhari 3176",
+        entries: [
+          { text: "Signs of the last hour = Muhammad's death; Conquest of Jerusalem; Plague that afflicts sheep; Wealth increase; Truce with Byzantines — this all happened >1000 years ago & Byzantines don't even exist today; yet, still no last hour." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "refuting-biblical-prophecies",
+    num: 10,
+    title: "Refuting 'Biblical Prophecies' of Muhammad",
+    side: "defend",
+    subsections: [
+      {
+        entries: [
+          { ref: "Deuteronomy 18.18", text: "The Prophet foretold must be from AMONG the Israelites; from among their brothers (Deuteronomy 17.15 defines brother as fellow Israelite); seen God face to face (like Moses in Exodus 24.10 & 33.11) — Muhammad fails." },
+          { ref: "Isaiah 42", text: "The servant is of Israel (Isaiah 41); is gentle; is given as a covenant; will have God's Spirit upon Him. Sela & Kedar will rejoice because they're homeland to the Ishmaelites, who were cut off from Israel — Muhammad fails." },
+          { ref: "Isaiah 29.12", text: "'Cannot read' refers to Spiritual blindness as a punishment from God; this is not a good thing — nothing to do with a coming Prophet." },
+          { ref: "Song of Songs 5.16", text: "This is a poem about Solomon and his lover; she calls him 'altogether lovely' which translates to 'machmadim', not Muhammad — coincidental phonetic similarity ≠ prophecy." },
+          { ref: "Daniel 2.31-45", text: "Ottomans conquered the Byzantines (but Rome persisted as the Holy Roman empire); Ottomans fell (fail 'everlasting'), Ottomans are a human kingdom (fail 'cut by no human hand') — claiming this as a prophecy requires layers of eisegetic interpretation." },
+          { ref: "John 14-15", text: "The Advocate is a Spirit; with us forever; abided in the 1st century Apostles; sent in the Name of Jesus; proceeds from the Father; is the Holy Spirit — Muhammad fails." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "hadith-unreliable",
+    num: 11,
+    title: "Hadith Unreliable",
+    desc: "Islam relies on Hadith for: the character of Muhammad & companions; compilation of Quran; prayer, fasting, Zakat, pilgrimage to Mecca, Shahada.",
+    side: "advance",
+    subsections: [
+      {
+        entries: [
+          { text: "The vast majority were documented 220 years after Muhammad; first manuscripts not until 400-600 years after Muhammad." },
+          { text: "~16000 hadith total; only ~200 are Mutuwatir (multiple chains of narration)." },
+          { text: "Bukhari, Muslim, Tirmidhi, Dawud, Nasai all lived same time & general area — nothing preventing group bias." },
+          { text: "Bukhari only commented on the reliability of 6% of narrators, with extremely brief one-line excerpts." },
+          { text: "Narrator biographies were not completed until 1300-1400AD (>700 years after Muhammad)." },
+          { text: "Most Sahih Isnad chains contain obscure narrators with very little biographical info." },
+          { text: "Nothing prevents a 7th century person/group fabricating a narration → attaching it to chain(s) of 'reliable' narrators to fake credibility → disseminating it across the caliphate." },
+          { text: "We know this happened, because Bukhari had to filter 600,000 fabrications down to just 7,000." },
+          { text: "Yet Bukhari's method is circular & flawed (i.e., it presumes Isnad chains were recorded faithfully, which are the very thing in question)." },
+          { text: "Furthermore, Isnad chains are verified by narrator biographies. Yet narrator biographies are verified by Isnad chains. So the system is a self-fulfilling circle." },
+        ],
+      },
+      {
+        heading: "Several Sahih Hadith Are Objectively Falsifiable, Invalidating the Isnad System",
+        entries: [
+          { ref: "Bukhari 3869 (Mutuwatir)", text: "Muhammad split and re-joined the moon." },
+          { ref: "Bukhari 3849", text: "Monkeys stoning each other for adultery." },
+          { ref: "Bukhari 278", text: "Moses had a scrotal hernia, a stone ran away with his clothes, he chased and beat the stone." },
+          { ref: "Tirmidhi 3192 vs 3193", text: "Tirmidhi 3192 contradicts 3193 (was Surah 30.1-4 revealed before the Roman victory, or 11 years later, after the Roman victory?)." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "muhammad-unreliable",
+    num: 12,
+    title: "Muhammad Unreliable",
+    side: "advance",
+    subsections: [
+      {
+        heading: "1. Bukhari 6982 — Muhammad's Claim to See Gabriel Was Unverified & Founded on a Lie",
+        entries: [
+          { text: "Event: something violated Muhammad in a cave → he ran in terror to Khadija & thought he was possessed → Waraqa (a blind Christian monk) convinced Muhammad it was Gabriel, who visited Moses → Waraqa died & Muhammad got suicidal → he only saw Gabriel when he tried to kill himself." },
+          { text: "Problems: Waraqa never saw Gabriel (Muhammad's prophethood based on an unverified guess); Gabriel never visited Moses (Muhammad's prophethood based on a lie); Muhammad was suicidal & insane (discrediting his testimony)." },
+        ],
+      },
+      {
+        heading: "2. Surah 69.44-46",
+        entries: [
+          { text: "If Muhammad was a false Prophet, he would die from a cut aorta — Dawud 4512 & Bukhari 4428: he died from a cut aorta." },
+        ],
+      },
+      {
+        heading: "3. Tirmidhi 1939",
+        entries: [
+          { text: "Muhammad said lying is permissible to wives, during war and to keep peace (discrediting his testimony)." },
+        ],
+      },
+      {
+        heading: "4. Bukhari 7146",
+        entries: [
+          { text: "Muhammad permits breaking oaths (discrediting his testimony)." },
+        ],
+      },
+      {
+        heading: "5. Bukhari 3268 & 3175 & 5765",
+        entries: [
+          { text: "Magic was worked on Muhammad; imagined he was doing things he was not doing; used to think he'd had sex with his wives when he had not (insane, no grip on reality, discrediting his testimony)." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "muhammad-motives",
+    num: 13,
+    title: "Muhammad's Alterior Motives",
+    side: "advance",
+    subsections: [
+      {
+        entries: [
+          { ref: "Surah 8.1 & 8.41", text: "Muhammad gets 1/5 of all war loot." },
+          { ref: "Dawud 2997", text: "Muhammad trades 7 slaves at a time." },
+          { ref: "Sahih Muslim 1438", text: "Muhammad gets sex slaves." },
+          { ref: "Surah 33.50", text: "Muhammad gets more wives than everyone else." },
+          { ref: "Bukhari 5068", text: "Muhammad gets 9 wives, and could afford to house all 9." },
+          { ref: "Nasa'i 3959", text: "Muhammad's wives are nagging him to stop having sex with his slave girl. So he reveals Surah 66.1, stating that Allah permitted it." },
+          { ref: "Bukhari 4793", text: "Muhammad's dinner guests wouldn't leave. He was too shy to tell them. So he revealed Surah 33.53: 'do not enter the houses of the Prophet except when you are permitted...when you have eaten, disperse without seeking to remain for conversation...' (Note 'houses of the prophet' (plural) — showing he was wealthy.)" },
+          { ref: "Multiple", text: "Muhammad was eating well: Muslim 2043 (dates); Al-Muhammadiyah 153 (chicken); Bukhari 5431 (sweets & honey); Nasai 265, Muslim 357, Bukhari 5404, Majah 493, Dawud 188, Majah 3311 (meat); Muslim 2008 (milk & honey); Bukhari 5404 & 5612 (milk); Bukhari 4793 (banquet of bread & meat)." },
+          { ref: "Bukhari 7420", text: "Muhammad desired his adopted son's wife; Surah 33.4 — Muhammad ended adoption; Surah 33.37 — Muhammad married his adopted son's wife." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "muhammad-character",
+    num: 14,
+    title: "Muhammad's Poor Character",
+    side: "advance",
+    subsections: [
+      {
+        entries: [
+          { ref: "Sahih Muslim 1438a & Dawud 2155", text: "Sex slavery." },
+          { ref: "Dawud 2995, 2997 & Sahih Ibn Habban (11/607)", text: "Killed Saffiyah's family, bought her for 7 slaves & raped her (she 'hated him' for killing her family)." },
+          { ref: "Nasai 4621, Bukhari 987, Dawud 2997, Mishkat al-Masabih 3260", text: "Owned, bought, sold and beat slaves." },
+          { ref: "Bukhari 2415, 2534, 2141", text: "Enforced slavery and canceled manumission." },
+          { ref: "Nasai 3378, Bukhari 6130", text: "Had sex with Aisha at age 9, who was prepubescent." },
+          { ref: "Sahih Muslim 1745b, Majah 2839", text: "Killed women and children in war." },
+          { ref: "Sahih Muslim 1731, Bukhari 3167", text: "Imposed Islam or Jizya on foreign lands." },
+          { ref: "Sahih Muslim 2922 & Tirmidhi 2236", text: "Commands to kill Jews until last hour." },
+          { ref: "Surah 9.29-30, Sahih Muslim 1767a, 2167a", text: "Commands to kill Jews & Christians, and ongoing hostility." },
+          { ref: "Bukhari 4122, Sahih Muslim 1738a, Majah 2541", text: "Massacred the Quraiza (after they surrendered), including young boys." },
+          { ref: "Bukhari 304", text: "Says women have half the intelligence and religion as men, and Hell is full of women because of this." },
+          { ref: "Surah 4.34, Dawud 2146, Bukhari 5825", text: "Endorsed beating wives." },
+          { ref: "Bukhari 6042, Mishkat al-Masabih 3260", text: "Endorsed beating women." },
+          { ref: "Nasai 3964", text: "Struck Asiah in the chest causing her great pain." },
+          { ref: "Nasai 4064, Bukhari 6922 & 6878", text: "Enforced Apostasy law (kill those who leave Islam)." },
+          { ref: "Sahih Muslim 2662c", text: "Teaches that Allah predestines unborn babies to hell." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "quran-inimitability",
+    num: 15,
+    title: "Quran Inimitability",
+    desc: "If the Quran's 'inimitability' is to be objectively proven, it must also be objectively falsifiable (hypothesis vs. null-hypothesis).",
+    side: "advance",
+    subsections: [
+      {
+        heading: "This requires a repeatable method, with pre-specified criteria",
+        entries: [
+          { text: "Formal definition of 'Quranic style'." },
+          { text: "Metric(s) to measure 'similarity'." },
+          { text: "Success threshold." },
+          { text: "Unbiased judging (peer review)." },
+          { text: "Simply stating 'it is linguistically inimitable' is not specific, not measurable and circular." },
+        ],
+      },
+      {
+        heading: "Using AI",
+        entries: [
+          { text: "ChatGPT (or any LLM) is insufficient; it is simply a data retrieval model. Without a pre-defined methodology & blinding, LLMs do not validate truth; they simply reproduce patterns in their training data. As a result, if a claim (such as Quranic inimitability) is disproportionately repeated in the data, it will bias that claim, regardless of truth." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "refuting-trinity-polemics",
+    num: 16,
+    title: "Refuting Trinity Strawman Polemics",
+    side: "defend",
+    subsections: [
+      {
+        heading: "Define Trinity",
+        entries: [
+          { text: "God = One Divine Nature, subsisting in 3 Persons." },
+          { text: "Co-equal in Nature, distinct in Person." },
+          { text: "Person (who) ≠ Nature (what)." },
+          { text: "Father ≠ Son ≠ Spirit (Persons distinct by relational origin)." },
+          { text: "Divine nature = infinite → indivisible." },
+          { text: "For comparison: Created natures = finite → instances divided in space-time." },
+        ],
+      },
+      {
+        heading: "Interlocutor Cannot Show Trinity Violates Laws of Logic",
+        entries: [
+          { text: "Identity: X is not X (in same respect)." },
+          { text: "Non-contradiction: X is true and false (at same time & in same respect)." },
+          { text: "Excluded middle: X is neither exclusively true nor false." },
+          { text: "As such, their critique will be a personal incredulity fallacy ('I don't understand X, so X is false'), which isn't a logical argument." },
+        ],
+      },
+      {
+        heading: "Refuting Incarnation Strawman Polemics — Incarnation Involved No Loss or Deficiency",
+        entries: [
+          { text: "The Son (Person) has a Divine Nature." },
+          { text: "He gained a distinct Human Nature." },
+          { text: "The Divine Nature remained unchanged." },
+          { text: "So the Incarnation involved no change or loss." },
+        ],
+      },
+      {
+        heading: "Mark 13.32 — Why Did Christ Not Know the Hour",
+        entries: [
+          { text: "Intellect is a faculty of nature, not person." },
+          { text: "i.e., its operation can be limited by natural condition (e.g., sleep, ignorance, injury), while the Person remains unchanged." },
+          { text: "The One Person of the Son has 2 natures, so 2 ways of knowing." },
+          { text: "Any limitation implied by Mark 13:32 pertains to His human nature only." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "trinity-in-bible",
+    num: 17,
+    title: "Trinity in the Bible",
+    desc: "Hebrew does not have the 'royal we'.",
+    side: "defend",
+    subsections: [
+      {
+        heading: "Plurality",
+        entries: [
+          { ref: "Genesis 1.26", text: "'Let US make man in OUR image according to OUR likeness'." },
+          { ref: "Genesis 3.22", text: "'Behold, the man has become like one of US...'" },
+          { ref: "Genesis 11.7", text: "'Come, let US go down and confuse their language...'" },
+          { ref: "Genesis 18", text: "3 men appeared to Abraham; all 3 called God." },
+          { ref: "Genesis 19.24", text: "YHWH rained fire from YHWH out of Heaven." },
+          { ref: "Daniel 7.14-27", text: "Son of Man called 'Most High'; approaches Ancient of Days; has eternal kingdom, worshiped by nations (Psalm 22.28: Kingdom is YHWH's; He rules the nations)." },
+        ],
+      },
+      {
+        heading: "Spirit",
+        entries: [
+          { ref: "Genesis 1.2", text: "'And the Spirit of God was hovering over the face of the waters.'" },
+          { ref: "Psalm 51.11", text: "'Do not cast me away from Your presence, and do not take Your Holy Spirit from me.'" },
+          { ref: "Psalm 139.7-8", text: "The Spirit of God is Omnipresent." },
+          { ref: "Isaiah 63.10", text: "'But they rebelled and grieved His Holy Spirit; Therefore He turned Himself to become their enemy; He fought against them'." },
+          { ref: "Ezekiel 3.24", text: "'Then the Spirit...He spoke to me and said: Go, shut yourself inside your house.'" },
+          { ref: "Acts 5.3-4", text: "'But Peter said, Ananias, why has Satan filled your heart to lie to the Holy Spirit...You have not lied to men but to God.'" },
+        ],
+      },
+      {
+        heading: "The Word / Angel of the Lord",
+        entries: [
+          { ref: "Genesis 15.1-7", text: "The Word of YHWH appeared to Abraham saying 'I am YHWH'." },
+          { ref: "Genesis 16.10-13", text: "Angel of the Lord is called God." },
+          { ref: "Genesis 31.11-13", text: "The Angel of YHWH calls Himself 'God of Bethel' to whom Jacob anointed a pillar and made a vow to." },
+          { ref: "Genesis 32.24-28", text: "Jacob wrestled with God (the Angel of YHWH). Hosea 12.3-4: 'He strove with the angel and prevailed...'" },
+          { ref: "Genesis 48.15-16", text: "Angel of YHWH defined as the God of Abraham & Isaac." },
+          { ref: "Zechariah 1.12", text: "'...Angel of the LORD said, O LORD of hosts, how long will you have no mercy on Jerusalem...'" },
+        ],
+      },
+      {
+        heading: "Trinity",
+        entries: [
+          { ref: "John 16.13-15", text: "Christ & the Spirit possess all things that the Father has." },
+          { ref: "Matthew 28.19", text: "Baptize in One Singular Name, shared by Father, Son and Spirit." },
+          { ref: "Isaiah 48.12-16", text: "'I am the first, I am also the last...So now Lord Yahweh has sent Me, and His Spirit.'" },
+        ],
+      },
+      {
+        heading: "The Son Incarnate",
+        entries: [
+          { ref: "Luke 10.22", text: "'All things have been handed over to me by my Father...'" },
+          { ref: "Matthew 28.18", text: "'All authority in heaven and on earth has been given to me.'" },
+          { ref: "John 5.19", text: "'For whatever the Father does He [the Son] does likewise'." },
+          { ref: "John 5.23", text: "'so that all may honor the Son, just as they honor the Father'." },
+          { ref: "Mark 14.62", text: "Jesus is the Son of Man coming with the clouds (Daniel 7)." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "nt-preservation",
+    num: 18,
+    title: "Preservation of the New Testament",
+    side: "defend",
+    subsections: [
+      {
+        entries: [
+          { text: "At least 11 manuscripts dated to 2nd century (List of New Testament papyri)." },
+          { text: "Diatesseron harmonising all 4 Gospels (dated ~160AD)." },
+          { text: "Thousands of early quotations, enough to reconstruct the entire corpus (Metzger B, Ehrman B. The Text of the New Testament. Fourth edition)." },
+          { text: "From 1st-2nd century, these include Polycarp, Clement, Ignatius, Irenaeus, Theophilus of Antioch & Justin Martyr." },
+          { text: "Analysis of early vs. medieval manuscripts, across traditions (Byzantine vs. Alexandrian) showed 92.6% textual stability, with only 0.1-0.2% of variants significantly impacting meaning (Heide M, et al. 2011)." },
+          { text: "300,000 variants between manuscripts, almost all trivial (i.e., word order, spelling, grammar etc...) & do not impact meaning (Textual criticism of the New Testament)." },
+        ],
+      },
+      {
+        heading: "Corroborated by Early Non-Biblical Literature",
+        entries: [
+          { text: "Shepherd of Hermas, Didache, Epistle of Barnabas, Diatesseron, early patristics (i.e., Clement, Ignatius, Polycarp)." },
+          { text: "Josephus, Tacitus, Suetonius, Pliny the Younger, Mara Bar Serapion (Top ten historical references to Jesus outside of the Bible)." },
+        ],
+      },
+      {
+        heading: "Authorship",
+        entries: [
+          { text: "Muratorian fragment (~160AD) names & identifies Gospel authors." },
+          { text: "Papias-Irenaeus (100-170AD) name & identify Gospel authors." },
+          { text: "All manuscripts with a front page contain the 4 traditional Gospel author names." },
+          { text: "Unanimous early consensus on author identity — no evidence for notions of anonymity or alternative naming from 1st-3rd centuries." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "messianic-prophecies",
+    num: 19,
+    title: "Specific Messianic Prophecies",
+    side: "defend",
+    subsections: [
+      {
+        heading: "1. Daniel 9.24-27",
+        entries: [
+          { text: "The Anointed One (Messiah) will be put to death, confirm a new Covenant & put an end to sacrifice offering." },
+          { text: "The time between order to rebuild Jerusalem & Anointed One being put to death will be 7x7 and 62x7 = 483 years. Artaxerxes ordered Jerusalem to be rebuilt in 445BC (Nehemiah 2). 445BC + 483 years = 38AD. Hebrew years are 360 days = 31AD (Jesus' crucifixion date)." },
+        ],
+      },
+      {
+        heading: "2. Micah 5.2",
+        entries: [
+          { text: "The Ancient of Days, ruler of Israel will come out of Bethlehem." },
+        ],
+      },
+      {
+        heading: "3. Isaiah 7.14",
+        entries: [
+          { text: "The virgin will conceive a Son called 'God is with us'." },
+        ],
+      },
+      {
+        heading: "4. Isaiah 9.6",
+        entries: [
+          { text: "A child is born, a Son is given, he will be called Mighty God." },
+        ],
+      },
+      {
+        heading: "5. Isaiah 53",
+        entries: [
+          { text: "He was pierced for our transgressions, crushed for our iniquity, bore our sin, cut off from the living, by His wounds we are healed, He will prolong His days." },
+        ],
+      },
+      {
+        heading: "6. Psalm 22",
+        entries: [
+          { text: "'My God, my God, why have you forsaken Me'; they say 'let YHWH rescue Him'; 'they have pierced my hands and feet'; 'I count all my bones'; 'they divide my garments...for my clothing they cast lots' — exactly how the crucifixion played out." },
+        ],
+      },
+      {
+        heading: "7. Zechariah 9.9-10",
+        entries: [
+          { text: "King of Jerusalem will ride a donkey/colt." },
+        ],
+      },
+      {
+        heading: "8. Zechariah 12.1-10",
+        entries: [
+          { text: "God declares that Jerusalem will look upon Him, who they have pierced, and weep as they would over a firstborn." },
+        ],
+      },
+    ],
+  },
 ];
