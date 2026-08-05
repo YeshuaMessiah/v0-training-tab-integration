@@ -2,7 +2,7 @@
 
 import { useMemo } from "react";
 import { VERSES, DAILY_TOPICS, type TabType } from "@/lib/data";
-import { Shield, Sword, BookOpen, Building2, Target, GraduationCap } from "lucide-react";
+import { Shield, Sword, BookOpen, Building2, Target, GraduationCap, Library, ChevronRight } from "lucide-react";
 import { TrainingProgressCard } from "@/components/training-progress-card";
 
 interface HomeScreenProps {
@@ -100,6 +100,25 @@ export function HomeScreen({ onNavigate }: HomeScreenProps) {
           highlight
         />
       </div>
+
+      {/* Reference Library — full apologetics reference */}
+      <button
+        onClick={() => onNavigate("reference")}
+        className="flex w-full items-center gap-3 rounded-xl border border-primary/40 bg-gradient-to-br from-card to-accent p-3.5 text-left transition-colors hover:border-primary"
+      >
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-primary/40 bg-primary/10">
+          <Library className="h-5 w-5 text-primary" aria-hidden="true" />
+        </div>
+        <div className="min-w-0 flex-1">
+          <div className="font-serif text-[14px] font-bold text-[var(--gold-2)]">
+            Reference Library
+          </div>
+          <p className="text-[11px] text-muted-foreground leading-tight">
+            19 sections of cited facts — Quran, hadith &amp; scripture
+          </p>
+        </div>
+        <ChevronRight className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+      </button>
 
       {/* Motto Bar */}
       <div className="rounded-lg bg-primary/10 py-3 px-4 text-center">

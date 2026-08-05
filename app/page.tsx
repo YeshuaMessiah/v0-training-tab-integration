@@ -11,6 +11,7 @@ import { ScriptureScreen } from "@/components/screens/scripture-screen";
 import { IslamScreen } from "@/components/screens/islam-screen";
 import { QuickDrawScreen } from "@/components/screens/quick-draw-screen";
 import { TrainingScreen } from "@/components/screens/training-screen";
+import { ReferenceScreen } from "@/components/screens/reference-screen";
 import { SearchResults } from "@/components/screens/search-results";
 import type { TabType } from "@/lib/data";
 import { initializeCapacitor, hapticLight } from "@/lib/capacitor";
@@ -109,6 +110,8 @@ export default function FrontlinesFaithApp() {
         return <QuickDrawScreen />;
       case "training":
         return <TrainingScreen />;
+      case "reference":
+        return <ReferenceScreen />;
       default:
         return <HomeScreen onNavigate={handleTabChange} />;
     }
