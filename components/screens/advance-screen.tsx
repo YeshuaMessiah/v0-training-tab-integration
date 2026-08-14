@@ -2,6 +2,7 @@
 
 import { ADVANCE_DATA } from "@/lib/data";
 import { ApologeticsCard } from "@/components/apologetics-card";
+import { Sword } from "lucide-react";
 
 interface AdvanceScreenProps {
   bookmarks: Set<string>;
@@ -15,8 +16,8 @@ export function AdvanceScreen({ bookmarks, onToggleBookmark }: AdvanceScreenProp
     <div className="space-y-4">
       {/* Header */}
       <div>
-        <h1 className="font-serif text-xl font-bold text-[#7ab0ff] flex items-center gap-2">
-          <span className="text-xl">&#128481;</span>
+        <h1 className="font-serif text-xl font-bold text-primary flex items-center gap-2">
+          <Sword className="h-5 w-5" aria-hidden="true" />
           Advance
         </h1>
         <p className="text-xs text-muted-foreground mt-1">

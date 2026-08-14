@@ -54,9 +54,15 @@ export function QuickDrawScreen() {
 
       {/* Cards */}
       <div>
-        {filteredItems.map((item, index) => (
-          <QuickDrawCard key={index} item={item} />
-        ))}
+        {filteredItems.length === 0 ? (
+          <div className="text-center py-12 text-muted-foreground text-sm">
+            No cards in this category yet.
+          </div>
+        ) : (
+          filteredItems.map((item, index) => (
+            <QuickDrawCard key={index} item={item} />
+          ))
+        )}
       </div>
     </div>
   );
@@ -80,12 +86,12 @@ function FilterButton({ active, onClick, variant, children }: FilterButtonProps)
           : "bg-transparent border-primary/40 text-primary/60 hover:bg-primary/10"
         ),
         variant === "red" && (active 
-          ? "bg-destructive/15 border-[#ff8888]/40 text-[#ff8888]" 
-          : "bg-transparent border-[#ff8888]/30 text-[#ff8888]/60 hover:bg-destructive/10"
+          ? "bg-destructive/15 border-claim-red-strong/40 text-claim-red-strong" 
+          : "bg-transparent border-claim-red-strong/30 text-claim-red-strong/60 hover:bg-destructive/10"
         ),
         variant === "blue" && (active 
-          ? "bg-accent/25 border-[#7ab0ff]/40 text-[#7ab0ff]" 
-          : "bg-transparent border-[#7ab0ff]/30 text-[#7ab0ff]/60 hover:bg-accent/15"
+          ? "bg-accent/25 border-advance-blue/40 text-advance-blue" 
+          : "bg-transparent border-advance-blue/30 text-advance-blue/60 hover:bg-accent/15"
         )
       )}
     >

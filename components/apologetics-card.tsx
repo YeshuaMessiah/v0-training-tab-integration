@@ -41,16 +41,40 @@ export function ApologeticsCard({
   };
 
   return (
-    <div className="rounded-xl border border-border bg-card p-4 mb-3">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex w-full items-center gap-2 text-left"
-      >
+    <div
+      className={cn(
+        "rounded-xl border border-border bg-card p-4 mb-3 border-l-[3px] shadow-[0_2px_12px_rgba(0,0,0,0.35)] transition-shadow",
+        // Category colour indicator on the left edge (scannable when collapsed)
+        isDefend ? "border-l-destructive/60" : "border-l-advance-blue/60",
+        isOpen && "border-primary/50 shadow-[0_4px_20px_rgba(201,168,76,0.08)]"
+      )}
+    >
+      <div className="flex w-full items-center gap-2">
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          aria-expanded={isOpen}
+          className="flex flex-1 items-center gap-2 text-left"
+        >
+          <span className="flex-1 font-serif text-base font-bold text-primary">
+            {item.title}
+          </span>
+
+          <ChevronDown
+            className={cn(
+              "h-4 w-4 text-muted-foreground transition-transform duration-200",
+              isOpen && "rotate-180"
+            )}
+          />
+        </button>
+
+        {/* Bookmark moved to the far right, away from the expand target */}
         <Button
           variant="ghost"
           size="sm"
+          aria-label={isBookmarked ? "Remove bookmark" : "Add bookmark"}
+          aria-pressed={isBookmarked}
           className={cn(
-            "h-8 w-8 p-0 shrink-0",
+            "h-11 w-11 min-w-11 p-0 shrink-0",
             isBookmarked ? "text-primary" : "text-muted-foreground"
           )}
           onClick={(e) => {
@@ -60,18 +84,7 @@ export function ApologeticsCard({
         >
           <Star className={cn("h-4 w-4", isBookmarked && "fill-current")} />
         </Button>
-        
-        <span className="flex-1 font-serif text-base font-bold text-primary">
-          {item.title}
-        </span>
-        
-        <ChevronDown 
-          className={cn(
-            "h-4 w-4 text-muted-foreground transition-transform duration-200",
-            isOpen && "rotate-180"
-          )}
-        />
-      </button>
+      </div>
       
       {isOpen && (
         <div className="mt-4 pt-4 border-t border-border/50 space-y-4">
@@ -80,7 +93,7 @@ export function ApologeticsCard({
               "inline-block rounded-full px-3 py-1 text-[10px] font-semibold tracking-wider uppercase border",
               isDefend 
                 ? "bg-destructive/30 text-destructive-foreground border-destructive/40"
-                : "bg-accent/40 text-[#7ab0ff] border-accent/60"
+                : "bg-accent/40 text-advance-blue border-accent/60"
             )}
           >
             {type}
@@ -92,7 +105,7 @@ export function ApologeticsCard({
               <h4 className="text-[11px] font-semibold uppercase tracking-wider text-[var(--gold-2)]">
                 Islamic Claim
               </h4>
-              <p className="text-sm text-[#ffaaaa] italic leading-relaxed">
+              <p className="text-sm text-claim-red italic leading-relaxed">
                 {`"${defendItem.claim}"`}
               </p>
             </div>
@@ -103,7 +116,7 @@ export function ApologeticsCard({
               <h4 className="text-[11px] font-semibold uppercase tracking-wider text-[var(--gold-2)]">
                 The Question
               </h4>
-              <p className="text-sm text-[#ffaaaa] italic leading-relaxed">
+              <p className="text-sm text-claim-red italic leading-relaxed">
                 {advanceItem.question}
               </p>
             </div>
@@ -168,15 +181,15 @@ export function ApologeticsCard({
           {/* Gospel Bridge / Invite */}
           {(isDefend ? defendItem.bridge : advanceItem.invite) && (
             <div className="rounded-lg border border-destructive/30 bg-destructive/15 px-3 py-2.5">
-              <p className="text-xs text-[#ffaaaa]">
-                <span className="font-bold text-[#ff8888]">Gospel Bridge: </span>
+              <p className="text-xs text-claim-red">
+                <span className="font-bold text-claim-red-strong">Gospel Bridge: </span>
                 {isDefend ? defendItem.bridge : advanceItem.invite}
               </p>
             </div>
           )}
           
           {/* Actions */}
-          <div className="pt-2">
+          <div className="flex justify-end pt-2">
             <Button
               variant="outline"
               size="sm"

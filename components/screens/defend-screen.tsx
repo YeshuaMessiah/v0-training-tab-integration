@@ -2,6 +2,7 @@
 
 import { DEFEND_DATA } from "@/lib/data";
 import { ApologeticsCard } from "@/components/apologetics-card";
+import { Shield } from "lucide-react";
 
 interface DefendScreenProps {
   bookmarks: Set<string>;
