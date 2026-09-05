@@ -1,4 +1,5 @@
 import type { CapacitorConfig } from '@capacitor/cli';
+import { KeyboardResize, KeyboardStyle } from '@capacitor/keyboard';
 
 const config: CapacitorConfig = {
   appId: 'com.frontlinesfaith.app',
@@ -30,8 +31,8 @@ const config: CapacitorConfig = {
       backgroundColor: '#0A1628',
     },
     Keyboard: {
-      resize: 'body',
-      style: 'DARK',
+      resize: KeyboardResize.Native,
+      style: KeyboardStyle.Dark,
       resizeOnFullScreen: true,
     },
   },

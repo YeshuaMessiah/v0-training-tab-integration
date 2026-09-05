@@ -2,6 +2,7 @@
 
 import { DEFEND_DATA } from "@/lib/data";
 import { ApologeticsCard } from "@/components/apologetics-card";
+import { Shield } from "lucide-react";
 
 interface DefendScreenProps {
   bookmarks: Set<string>;
@@ -15,8 +16,8 @@ export function DefendScreen({ bookmarks, onToggleBookmark }: DefendScreenProps)
     <div className="space-y-4">
       {/* Header */}
       <div>
-        <h1 className="font-serif text-xl font-bold text-[var(--gold-2)] flex items-center gap-2">
-          <span className="text-xl">&#9876;</span>
+        <h1 className="font-serif text-xl font-bold text-primary flex items-center gap-2">
+          <Shield className="h-5 w-5" aria-hidden="true" />
           Defend
         </h1>
         <p className="text-xs text-muted-foreground mt-1">

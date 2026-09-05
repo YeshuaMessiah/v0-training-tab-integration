@@ -111,10 +111,13 @@ export function TrainingScreen() {
     }
   }, []);
 
-  // Save stats to localStorage
+  // Save stats to localStorage and notify the home screen card in real-time
+  // ENHANCEMENT 4: dispatching 'ff-stats-updated' so TrainingProgressCard
+  // re-reads localStorage immediately — no page reload needed.
   const saveStats = useCallback((newStats: TrainingStats) => {
     localStorage.setItem('ff-training-stats', JSON.stringify(newStats));
     setStats(newStats);
+    window.dispatchEvent(new Event('ff-stats-updated'));
   }, []);
 
   const toggleCategory = (cat: TrainingCategory) => {

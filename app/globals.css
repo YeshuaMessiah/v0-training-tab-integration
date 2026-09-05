@@ -16,8 +16,15 @@
   --off-white-2: #ede8dc;
   --text-primary: #f8f6f0;
   --text-secondary: #c9c0a8;
-  --text-muted: #8a8070;
+  --text-muted: #9a9585; /* lightened from #8a8070 to pass WCAG AA on navy */
   --accent-blue: #1a3a6b;
+
+  /* Semantic content colours (previously hardcoded across 8 files) */
+  --advance-blue: #7ab0ff;
+  --advance-blue-dim: rgba(122, 176, 255, 0.15);
+  --claim-red: #ffaaaa;
+  --claim-red-strong: #ff8888;
+  --scripture-green: #90ee90;
   
   --background: var(--navy);
   --foreground: var(--text-primary);
@@ -80,6 +87,10 @@
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
+  --color-advance-blue: var(--advance-blue);
+  --color-claim-red: var(--claim-red);
+  --color-claim-red-strong: var(--claim-red-strong);
+  --color-scripture-green: var(--scripture-green);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
@@ -108,6 +119,13 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  /* Visible keyboard focus for all interactive elements (a11y) */
+  button:focus-visible,
+  a:focus-visible,
+  [role="button"]:focus-visible,
+  input:focus-visible {
+    @apply outline outline-2 outline-ring outline-offset-2;
   }
 }
 
