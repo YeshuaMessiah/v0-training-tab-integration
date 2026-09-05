@@ -127,7 +127,7 @@ export default function FrontlinesFaithApp() {
           onSearchChange={handleSearchChange} 
         />
         
-        <main className="flex-1 px-4 py-4 pb-20">
+        <main className="mx-auto w-full max-w-2xl flex-1 px-4 py-4 pb-24 sm:px-6">
           {renderContent()}
         </main>
         

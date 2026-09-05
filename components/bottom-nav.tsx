@@ -41,7 +41,7 @@ export function BottomNav({ activeTab, onTabChange }: BottomNavProps) {
               aria-label={tab.label}
               aria-current={isActive ? "page" : undefined}
               className={cn(
-                "flex flex-1 flex-col items-center gap-1 py-2.5 px-1 text-[10px] tracking-wide transition-colors",
+                "flex min-h-16 flex-1 flex-col items-center justify-center gap-1 px-1 py-2 text-[10px] tracking-wide transition-colors",
                 isActive
                   ? "text-primary"
                   : "text-muted-foreground hover:text-foreground"

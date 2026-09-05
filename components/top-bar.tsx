@@ -25,11 +25,12 @@ export function TopBar({ searchValue, onSearchChange }: TopBarProps) {
         <div className="relative ml-auto">
           <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
-            type="text"
+            type="search"
+            aria-label="Search apologetics content"
             placeholder="Search..."
             value={searchValue}
             onChange={(e) => onSearchChange(e.target.value)}
-            className="h-9 w-32 rounded-full border-border bg-input pl-9 pr-3 text-sm text-foreground placeholder:text-muted-foreground focus:w-40 focus:border-primary transition-all duration-200"
+            className="h-9 w-32 rounded-full border-border bg-input pl-9 pr-3 text-sm text-foreground placeholder:text-muted-foreground transition-all duration-200 focus:w-48 focus:border-primary sm:w-48"
           />
         </div>
       </div>

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { QUICKDRAW } from "@/lib/data";
 import { QuickDrawCard } from "@/components/quick-draw-card";
+import { Target } from "lucide-react";
 
 type FilterType = "all" | "defense" | "advance";
 
@@ -19,7 +20,7 @@ export function QuickDrawScreen() {
       {/* Header */}
       <div>
         <h1 className="font-serif text-xl font-bold text-primary flex items-center gap-2">
-          <span className="text-xl">&#127919;</span>
+          <Target className="h-5 w-5" aria-hidden="true" />
           Quick Draw
         </h1>
         <p className="text-xs text-muted-foreground mt-1">

@@ -1,14 +1,15 @@
 "use client";
 
 import { SCRIPTURE_DATA } from "@/lib/data";
+import { BookOpen } from "lucide-react";
 
 export function ScriptureScreen() {
   return (
     <div className="space-y-4">
       {/* Header */}
       <div>
-        <h1 className="font-serif text-xl font-bold text-[#90ee90] flex items-center gap-2">
-          <span className="text-xl">&#128214;</span>
+        <h1 className="font-serif text-xl font-bold text-primary flex items-center gap-2">
+          <BookOpen className="h-5 w-5" aria-hidden="true" />
           Scripture Library
         </h1>
         <p className="text-xs text-muted-foreground mt-1">
@@ -20,7 +21,7 @@ export function ScriptureScreen() {
       {SCRIPTURE_DATA.map((topic) => (
         <div 
           key={topic.topic}
-          className="rounded-xl border border-[rgba(0,120,0,0.25)] bg-card p-3.5"
+          className="rounded-xl border border-scripture-green/25 bg-card p-3.5 shadow-[0_2px_10px_rgba(0,0,0,0.25)]"
         >
           <h3 
             className="font-serif text-[15px] font-bold mb-2.5"

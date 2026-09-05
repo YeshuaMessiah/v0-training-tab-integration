@@ -5,7 +5,14 @@ export const VERSES = [
   { text: "Always be prepared to give an answer to everyone who asks you to give the reason for the hope that you have — but do this with gentleness and respect.", ref: "1 Peter 3:15" },
   { text: "In your hearts revere Christ as Lord. Always be prepared to give a defense...", ref: "1 Peter 3:15" },
   { text: "The word of our God stands forever.", ref: "Isaiah 40:8" },
-  { text: "Jesus said to him, 'I am the way, and the truth, and the life. No one comes to the Father except through me.'", ref: "John 14:6" }
+  { text: "Jesus said to him, 'I am the way, and the truth, and the life. No one comes to the Father except through me.'", ref: "John 14:6" },
+  { text: "For we walk by faith, not by sight.", ref: "2 Corinthians 5:7" },
+  { text: "Sanctify them in the truth; your word is truth.", ref: "John 17:17" },
+  { text: "The grass withers, the flower fades, but the word of our God will stand forever.", ref: "Isaiah 40:8" },
+  { text: "For there is one God, and there is one mediator between God and men, the man Christ Jesus.", ref: "1 Timothy 2:5" },
+  { text: "I and the Father are one.", ref: "John 10:30" },
+  { text: "For by grace you have been saved through faith. And this is not your own doing; it is the gift of God.", ref: "Ephesians 2:8" },
+  { text: "But in your hearts honor Christ the Lord as holy, always being prepared to make a defense.", ref: "1 Peter 3:15" }
 ];
 
 export const DAILY_TOPICS = [
@@ -16,7 +23,15 @@ export const DAILY_TOPICS = [
   "Salvation by Grace — Ephesians 2:8-9",
   "Islam's View of Jesus — Surah 4:171",
   "Muhammad's Revelations — Historical analysis",
-  "The Quran & the Bible — Surah 5:47 paradox"
+  "The Quran & the Bible — Surah 5:47 paradox",
+  "The Resurrection — Luke 24:1-8 & 1 Corinthians 15:14",
+  "Jesus as the Great I AM — John 8:58",
+  "The Holy Spirit — John 14:16-17",
+  "The Problem of Sin — Romans 3:23",
+  "The Reliability of the Gospels — Luke 1:1-4",
+  "Grace and Works — James 2:17 & Ephesians 2:8-10",
+  "The Uniqueness of Christ — Acts 4:12",
+  "Responding with Gentleness — Colossians 4:5-6"
 ];
 
 export interface DefendItem {

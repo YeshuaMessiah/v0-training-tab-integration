@@ -52,7 +52,7 @@ export function ReferenceScreen() {
     <div className="space-y-4">
       {/* Header */}
       <div>
-        <h1 className="font-serif text-xl font-bold text-[var(--gold-2)] flex items-center gap-2">
+        <h1 className="font-serif text-xl font-bold text-primary flex items-center gap-2">
           <Library className="h-5 w-5" aria-hidden="true" />
           Reference Library
         </h1>
@@ -136,7 +136,7 @@ function ReferenceAccordion({
   highlight: string;
 }) {
   const isAdvance = section.side === "advance";
-  const accent = isAdvance ? "text-[#ffaaaa]" : "text-[#7ab0ff]";
+  const accent = isAdvance ? "text-claim-red" : "text-advance-blue";
   const Icon = isAdvance ? Sword : Shield;
 
   const panelId = `ref-panel-${section.id}`;

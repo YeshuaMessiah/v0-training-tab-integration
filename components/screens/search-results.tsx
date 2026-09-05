@@ -157,7 +157,7 @@ export function SearchResults({ query, bookmarks, onToggleBookmark }: SearchResu
                       )}
                       <span
                         className={`text-[10px] font-semibold uppercase tracking-wide ${
-                          m.side === "advance" ? "text-[#ffaaaa]" : "text-[#7ab0ff]"
+                          m.side === "advance" ? "text-claim-red" : "text-advance-blue"
                         }`}
                       >
                         {m.sectionTitle}

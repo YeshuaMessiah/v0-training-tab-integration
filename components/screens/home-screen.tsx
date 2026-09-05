@@ -51,7 +51,7 @@ export function HomeScreen({ onNavigate }: HomeScreenProps) {
 
       {/* Daily Challenge */}
       <div className="rounded-xl border border-destructive/35 bg-destructive/15 p-3.5">
-        <h4 className="text-[13px] font-semibold uppercase tracking-wider text-[#ff9999] mb-1.5 flex items-center gap-2">
+        <h4 className="text-[13px] font-semibold uppercase tracking-wider text-claim-red-strong mb-1.5 flex items-center gap-2">
           <span className="text-base">&#9889;</span>
           {"Today's Topic to Master"}
         </h4>
