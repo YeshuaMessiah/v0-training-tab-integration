@@ -2,7 +2,7 @@
 
 import { useMemo } from "react";
 import { VERSES, DAILY_TOPICS, type TabType } from "@/lib/data";
-import { Shield, Sword, BookOpen, Building2, Target, GraduationCap, Library, ChevronRight } from "lucide-react";
+import { Shield, Sword, BookOpen, Building2, Target, GraduationCap, Library, ChevronRight, Zap } from "lucide-react";
 import { TrainingProgressCard } from "@/components/training-progress-card";
 
 interface HomeScreenProps {
@@ -52,7 +52,7 @@ export function HomeScreen({ onNavigate }: HomeScreenProps) {
       {/* Daily Challenge */}
       <div className="rounded-xl border border-destructive/35 bg-destructive/15 p-3.5">
         <h4 className="text-[13px] font-semibold uppercase tracking-wider text-claim-red-strong mb-1.5 flex items-center gap-2">
-          <span className="text-base">&#9889;</span>
+          <Zap className="h-4 w-4" aria-hidden="true" />
           {"Today's Topic to Master"}
         </h4>
         <p className="text-sm text-secondary-foreground/80">
