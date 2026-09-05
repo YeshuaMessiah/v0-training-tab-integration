@@ -25,7 +25,11 @@ import {
   Check, 
   X as XIcon, 
   RotateCcw,
-  Flame
+  Flame,
+  BookOpen,
+  Cross,
+  Building2,
+  Landmark
 } from "lucide-react";
 
 type Mode = 'mcq' | 'flash' | 'fill' | 'scenario';
@@ -45,14 +49,14 @@ const MODE_CONFIG: { id: Mode; label: string; icon: typeof Target; desc: string 
   { id: 'scenario', label: 'Scenario Battle', icon: Swords, desc: 'Real conversation drills' },
 ];
 
-const CATEGORY_CONFIG: { id: TrainingCategory; label: string; emoji?: string }[] = [
+const CATEGORY_CONFIG: { id: TrainingCategory; label: string; icon?: typeof Target }[] = [
   { id: 'all', label: 'All Topics' },
-  { id: 'defend', label: 'Defend', emoji: '🛡️' },
-  { id: 'advance', label: 'Advance', emoji: '⚔️' },
-  { id: 'bible', label: 'Bible', emoji: '📖' },
-  { id: 'jesus', label: 'Jesus', emoji: '✝️' },
-  { id: 'islam', label: 'Islam', emoji: '🕌' },
-  { id: 'history', label: 'History', emoji: '🏛️' },
+  { id: 'defend', label: 'Defend', icon: Shield },
+  { id: 'advance', label: 'Advance', icon: Swords },
+  { id: 'bible', label: 'Bible', icon: BookOpen },
+  { id: 'jesus', label: 'Jesus', icon: Cross },
+  { id: 'islam', label: 'Islam', icon: Building2 },
+  { id: 'history', label: 'History', icon: Landmark },
 ];
 
 function getLevel(xp: number) {
@@ -370,20 +374,20 @@ export function TrainingScreen() {
           </label>
           <div className="flex flex-wrap gap-2">
             {CATEGORY_CONFIG.map((cat) => (
-              <Badge
-                key={cat.id}
-                variant={categories.includes(cat.id) ? "default" : "outline"}
-                className={cn(
-                  "cursor-pointer transition-all text-xs py-1 px-3",
+  <Badge
+  key={cat.id}
+  variant={categories.includes(cat.id) ? "default" : "outline"}
+  className={cn(
+  "cursor-pointer transition-all text-xs min-h-11 py-2 px-3",
                   categories.includes(cat.id) 
                     ? "bg-primary text-primary-foreground hover:bg-primary/90" 
                     : "hover:border-primary/50"
                 )}
-                onClick={() => toggleCategory(cat.id)}
-              >
-                {cat.emoji && <span className="mr-1">{cat.emoji}</span>}
-                {cat.label}
-              </Badge>
+  onClick={() => toggleCategory(cat.id)}
+  >
+  {cat.icon && <cat.icon className="mr-1 h-3.5 w-3.5" aria-hidden="true" />}
+  {cat.label}
+  </Badge>
             ))}
           </div>
         </div>
