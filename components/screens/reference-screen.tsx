@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { REFERENCE_DATA, type ReferenceSection } from "@/lib/data";
 import { ChevronDown, Sword, Shield, Library, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Input } from "@/components/ui/input";
 
 type FilterType = "all" | "advance" | "defend";
 
@@ -47,6 +48,14 @@ export function ReferenceScreen() {
       ),
     []
   );
+  const filteredEntries = useMemo(
+    () =>
+      sections.reduce(
+        (sum, s) => sum + s.subsections.reduce((a, sub) => a + sub.entries.length, 0),
+        0
+      ),
+    [sections]
+  );
 
   return (
     <div className="space-y-4">
@@ -57,7 +66,9 @@ export function ReferenceScreen() {
           Reference Library
         </h1>
         <p className="text-xs text-muted-foreground mt-1">
-          {`Complete apologetics reference — ${REFERENCE_DATA.length} sections, ${totalEntries} cited facts`}
+          {sections.length === REFERENCE_DATA.length && !query.trim() && filter === "all"
+            ? `Complete apologetics reference — ${REFERENCE_DATA.length} sections, ${totalEntries} cited facts`
+            : `${sections.length} sections, ${filteredEntries} cited facts matching your filters`}
         </p>
       </div>
 
@@ -67,13 +78,13 @@ export function ReferenceScreen() {
           className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground"
           aria-hidden="true"
         />
-        <input
+        <Input
           type="search"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search facts, verses, hadith refs..."
           aria-label="Search the reference library"
-          className="w-full rounded-lg border border-border bg-card py-2 pl-9 pr-3 text-[13px] text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+          className="pl-9"
         />
       </div>
 

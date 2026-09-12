@@ -134,6 +134,10 @@
   padding-bottom: env(safe-area-inset-bottom, 0);
 }
 
+body.keyboard-open .safe-area-bottom {
+  padding-bottom: max(env(safe-area-inset-bottom, 0px), var(--keyboard-height, 0px));
+}
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
