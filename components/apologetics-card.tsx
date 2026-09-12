@@ -24,6 +24,7 @@ export function ApologeticsCard({
   const isDefend = type === "defend";
   const defendItem = item as DefendItem;
   const advanceItem = item as AdvanceItem;
+  const contentId = `card-${item.title.replace(/\s+/g, "-").replace(/[^a-zA-Z0-9-]/g, "").toLowerCase().slice(0, 30)}`;
   
   const handleShare = async () => {
     const text = `${item.title} — ${isDefend ? defendItem.response?.substring(0, 120) : advanceItem.dilemma?.substring(0, 120)}...`;
@@ -53,6 +54,7 @@ export function ApologeticsCard({
         <button
           onClick={() => setIsOpen(!isOpen)}
           aria-expanded={isOpen}
+          aria-controls={contentId}
           className="flex flex-1 items-center gap-2 text-left"
         >
           <span className="flex-1 font-serif text-base font-bold text-primary">
@@ -87,7 +89,7 @@ export function ApologeticsCard({
       </div>
       
       {isOpen && (
-        <div className="mt-4 pt-4 border-t border-border/50 space-y-4">
+        <div id={contentId} role="region" aria-label={item.title} className="mt-4 space-y-4 border-t border-border/50 pt-4">
           <span 
             className={cn(
               "inline-block rounded-full px-3 py-1 text-[10px] font-semibold tracking-wider uppercase border",

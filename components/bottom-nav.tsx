@@ -17,7 +17,7 @@ const tabs: { id: TabType; label: string; icon: typeof Home }[] = [
   { id: "home", label: "Home", icon: Home },
   { id: "defend", label: "Defend", icon: Shield },
   { id: "advance", label: "Advance", icon: Sword },
-  { id: "islam", label: "Know Islam", icon: Building2 },
+  { id: "islam", label: "Islam", icon: Building2 },
   { id: "quickdraw", label: "Quick Draw", icon: Target },
   { id: "training", label: "Training", icon: GraduationCap },
 ];
@@ -41,12 +41,18 @@ export function BottomNav({ activeTab, onTabChange }: BottomNavProps) {
               aria-label={tab.label}
               aria-current={isActive ? "page" : undefined}
               className={cn(
-                "flex min-h-16 flex-1 flex-col items-center justify-center gap-1 px-1 py-2 text-[10px] tracking-wide transition-colors",
+                "relative flex min-h-16 flex-1 flex-col items-center justify-center gap-1 px-1 py-2 text-[10px] tracking-wide transition-colors",
                 isActive
                   ? "text-primary"
                   : "text-muted-foreground hover:text-foreground"
               )}
             >
+              {isActive && (
+                <span
+                  className="absolute left-1/2 top-0 h-0.5 w-8 -translate-x-1/2 rounded-full bg-primary"
+                  aria-hidden="true"
+                />
+              )}
               <Icon
                 className={cn(
                   "h-[18px] w-[18px]",

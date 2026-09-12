@@ -335,34 +335,34 @@ export function TrainingScreen() {
                 {nextLevelData ? `${stats.xp} / ${nextLevelData.xp} XP` : `${stats.xp} XP (Max)`}
               </span>
             </div>
-            <div className="h-2 bg-muted rounded-full overflow-hidden">
-              <div 
-                className="h-full bg-gradient-to-r from-primary to-primary/70 rounded-full transition-all duration-500"
-                style={{ width: `${xpProgress}%` }}
-              />
-            </div>
+            <Progress
+              value={xpProgress}
+              className="h-2"
+              aria-label={`Training progress: ${stats.xp} of ${nextLevelData?.xp ?? stats.xp} XP`}
+            />
           </CardContent>
         </Card>
 
         {/* Mode Selection */}
-        <div className="grid grid-cols-2 gap-2">
+        <div role="radiogroup" aria-label="Select training mode" className="grid grid-cols-2 gap-2">
           {MODE_CONFIG.map((m) => {
             const Icon = m.icon;
             return (
-              <Card 
+              <button
                 key={m.id}
+                type="button"
+                role="radio"
+                aria-checked={mode === m.id}
+                onClick={() => setMode(m.id)}
                 className={cn(
-                  "cursor-pointer transition-all hover:border-primary/50",
+                  "w-full rounded-xl border bg-card p-3 text-center transition-all hover:border-primary/50",
                   mode === m.id && "border-primary bg-primary/5"
                 )}
-                onClick={() => setMode(m.id)}
               >
-                <CardContent className="p-3 text-center">
-                  <Icon className="h-6 w-6 mx-auto mb-2 text-primary" />
-                  <div className="text-sm font-medium text-primary">{m.label}</div>
-                  <div className="text-[10px] text-muted-foreground mt-1">{m.desc}</div>
-                </CardContent>
-              </Card>
+                <Icon className="mx-auto mb-2 h-6 w-6 text-primary" aria-hidden="true" />
+                <div className="text-sm font-medium text-primary">{m.label}</div>
+                <div className="mt-1 text-[10px] text-muted-foreground">{m.desc}</div>
+              </button>
             );
           })}
         </div>
@@ -373,22 +373,27 @@ export function TrainingScreen() {
             Category
           </label>
           <div className="flex flex-wrap gap-2">
-            {CATEGORY_CONFIG.map((cat) => (
-  <Badge
-  key={cat.id}
-  variant={categories.includes(cat.id) ? "default" : "outline"}
-  className={cn(
-  "cursor-pointer transition-all text-xs min-h-11 py-2 px-3",
-                  categories.includes(cat.id) 
-                    ? "bg-primary text-primary-foreground hover:bg-primary/90" 
-                    : "hover:border-primary/50"
-                )}
-  onClick={() => toggleCategory(cat.id)}
-  >
-  {cat.icon && <cat.icon className="mr-1 h-3.5 w-3.5" aria-hidden="true" />}
-  {cat.label}
-  </Badge>
-            ))}
+            {CATEGORY_CONFIG.map((cat) => {
+              const Icon = cat.icon;
+              const selected = categories.includes(cat.id);
+              return (
+                <button
+                  key={cat.id}
+                  type="button"
+                  aria-pressed={selected}
+                  onClick={() => toggleCategory(cat.id)}
+                  className={cn(
+                    "inline-flex min-h-11 items-center gap-1 rounded-full border px-3 py-2 text-xs transition-colors",
+                    selected
+                      ? "border-primary bg-primary text-primary-foreground hover:bg-primary/90"
+                      : "border-border bg-card text-muted-foreground hover:border-primary/50 hover:text-foreground"
+                  )}
+                >
+                  {Icon && <Icon className="h-3.5 w-3.5" aria-hidden="true" />}
+                  {cat.label}
+                </button>
+              );
+            })}
           </div>
         </div>
 

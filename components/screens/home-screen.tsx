@@ -3,6 +3,7 @@
 import { useMemo } from "react";
 import { VERSES, DAILY_TOPICS, type TabType } from "@/lib/data";
 import { Shield, Sword, BookOpen, Building2, Target, GraduationCap, Library, ChevronRight, Zap } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { TrainingProgressCard } from "@/components/training-progress-card";
 
 interface HomeScreenProps {
@@ -50,15 +51,20 @@ export function HomeScreen({ onNavigate }: HomeScreenProps) {
       <TrainingProgressCard onNavigate={onNavigate} />
 
       {/* Daily Challenge */}
-      <div className="rounded-xl border border-destructive/35 bg-destructive/15 p-3.5">
-        <h4 className="text-[13px] font-semibold uppercase tracking-wider text-claim-red-strong mb-1.5 flex items-center gap-2">
+      <button
+        type="button"
+        onClick={() => onNavigate("defend")}
+        className="w-full rounded-xl border border-destructive/35 bg-destructive/15 p-3.5 text-left transition-colors hover:border-destructive/50 active:bg-destructive/25"
+      >
+        <h4 className="mb-1.5 flex items-center gap-2 text-[13px] font-semibold uppercase tracking-wider text-claim-red-strong">
           <Zap className="h-4 w-4" aria-hidden="true" />
           {"Today's Topic to Master"}
         </h4>
-        <p className="text-sm text-secondary-foreground/80">
-          {dailyTopic}
-        </p>
-      </div>
+        <p className="text-sm text-secondary-foreground/80">{dailyTopic}</p>
+        <span className="mt-1.5 flex items-center gap-1 text-[10px] text-claim-red/70">
+          Study now <ChevronRight className="h-3 w-3" aria-hidden="true" />
+        </span>
+      </button>
 
       {/* Quick Navigation Grid */}
       <div className="grid grid-cols-3 gap-2.5">
@@ -148,7 +154,10 @@ function QuickButton({ icon: Icon, label, sublabel, onClick, highlight }: QuickB
           : "border-border bg-card hover:border-primary hover:bg-primary/5"
       }`}
     >
-      <Icon className={`h-5 w-5 mx-auto mb-1 ${highlight ? "text-primary" : "text-primary"}`} />
+      <Icon className={cn(
+        "mx-auto mb-1 h-5 w-5 text-primary transition-all",
+        highlight && "drop-shadow-[0_0_8px_rgba(201,168,76,0.7)]"
+      )} aria-hidden="true" />
       <div className="font-serif text-[12px] font-semibold text-primary">{label}</div>
       <div className="text-[10px] text-muted-foreground leading-tight">{sublabel}</div>
     </button>

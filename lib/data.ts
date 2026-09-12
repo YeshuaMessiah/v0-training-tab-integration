@@ -12,7 +12,7 @@ export const VERSES = [
   { text: "For there is one God, and there is one mediator between God and men, the man Christ Jesus.", ref: "1 Timothy 2:5" },
   { text: "I and the Father are one.", ref: "John 10:30" },
   { text: "For by grace you have been saved through faith. And this is not your own doing; it is the gift of God.", ref: "Ephesians 2:8" },
-  { text: "But in your hearts honor Christ the Lord as holy, always being prepared to make a defense.", ref: "1 Peter 3:15" }
+  { text: "Finally, be strong in the Lord and in his mighty power. Put on the full armor of God.", ref: "Ephesians 6:10-11" }
 ];
 
 export const DAILY_TOPICS = [
@@ -400,7 +400,7 @@ export interface ScriptureTopic {
 export const SCRIPTURE_DATA: ScriptureTopic[] = [
   {
     topic: "Deity of Christ",
-    color: "#90ee90",
+    color: "var(--scripture-green)",
     verses: [
       { ref: "John 1:1", text: "In the beginning was the Word, and the Word was with God, and the Word was God." },
       { ref: "John 8:58", text: "'Very truly I tell you,' Jesus answered, 'before Abraham was born, I am!'" },
@@ -411,7 +411,7 @@ export const SCRIPTURE_DATA: ScriptureTopic[] = [
   },
   {
     topic: "The Trinity",
-    color: "#90ee90",
+    color: "var(--scripture-green)",
     verses: [
       { ref: "Matthew 28:19", text: "Go and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit." },
       { ref: "2 Corinthians 13:14", text: "May the grace of the Lord Jesus Christ, and the love of God, and the fellowship of the Holy Spirit be with you all." },
@@ -421,7 +421,7 @@ export const SCRIPTURE_DATA: ScriptureTopic[] = [
   },
   {
     topic: "Reliability of the Bible",
-    color: "#90ee90",
+    color: "var(--scripture-green)",
     verses: [
       { ref: "Psalm 119:89", text: "Your word, LORD, is eternal; it stands firm in the heavens." },
       { ref: "Isaiah 40:8", text: "The grass withers and the flowers fall, but the word of our God endures forever." },
@@ -431,7 +431,7 @@ export const SCRIPTURE_DATA: ScriptureTopic[] = [
   },
   {
     topic: "The Cross & Atonement",
-    color: "#ff9999",
+    color: "var(--claim-red-strong)",
     verses: [
       { ref: "Isaiah 53:5-6", text: "But he was pierced for our transgressions, he was crushed for our iniquities; the punishment that brought us peace was on him, and by his wounds we are healed." },
       { ref: "Romans 5:8", text: "But God demonstrates his own love for us in this: While we were still sinners, Christ died for us." },
@@ -441,7 +441,7 @@ export const SCRIPTURE_DATA: ScriptureTopic[] = [
   },
   {
     topic: "Salvation by Grace",
-    color: "#7ab0ff",
+    color: "var(--advance-blue)",
     verses: [
       { ref: "Ephesians 2:8-9", text: "For it is by grace you have been saved, through faith — and this is not from yourselves, it is the gift of God — not by works, so that no one can boast." },
       { ref: "Romans 3:23-24", text: "For all have sinned and fall short of the glory of God, and all are justified freely by his grace through the redemption that came by Christ Jesus." },
@@ -451,7 +451,7 @@ export const SCRIPTURE_DATA: ScriptureTopic[] = [
   },
   {
     topic: "Prophecy Fulfilled by Jesus",
-    color: "#ffd700",
+    color: "var(--gold-2)",
     verses: [
       { ref: "Isaiah 53:3", text: "He was despised and rejected by mankind, a man of suffering, and familiar with pain." },
       { ref: "Micah 5:2", text: "But you, Bethlehem Ephrathah, though you are small among the clans of Judah, out of you will come for me one who will be ruler over Israel, whose origins are from of old, from ancient times." },
@@ -461,7 +461,7 @@ export const SCRIPTURE_DATA: ScriptureTopic[] = [
   },
   {
     topic: "Loving Muslims",
-    color: "#ffaaaa",
+    color: "var(--claim-red)",
     verses: [
       { ref: "Matthew 5:44", text: "But I tell you, love your enemies and pray for those who persecute you." },
       { ref: "Romans 5:8", text: "But God demonstrates his own love for us in this: While we were still sinners, Christ died for us." },
