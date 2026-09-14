@@ -1529,3 +1529,45 @@ export const REFERENCE_DATA: ReferenceSection[] = [
     ],
   },
 ];
+
+export type AcademyLesson = {
+  id: string;
+  sectionId: string;
+  sectionTitle: string;
+  side: ReferenceSection["side"];
+  sourceType: "Quran" | "Hadith" | "Bible" | "History" | "Theology";
+  title: string;
+  claim: string;
+  explanation: string;
+  citation: string;
+  reviewPrompt: string;
+};
+
+function getAcademySourceType(citation: string, sectionTitle: string): AcademyLesson["sourceType"] {
+  if (/bukhari|muslim|hadith|tirmidhi|abu dawud/i.test(citation)) return "Hadith";
+  if (/surah|quran/i.test(citation)) return "Quran";
+  if (/bible|manuscript|gospel|testament/i.test(sectionTitle)) return "Bible";
+  if (/history|historical|manuscript/i.test(sectionTitle)) return "History";
+  return "Theology";
+}
+
+export const ACADEMY_LESSONS: AcademyLesson[] = REFERENCE_DATA.flatMap((section) =>
+  section.subsections.flatMap((subsection, subsectionIndex) =>
+    subsection.entries.map((entry, entryIndex) => {
+      const citation = entry.ref ?? "Reference Library source";
+      const title = entry.label ?? subsection.heading ?? section.title;
+      return {
+        id: `${section.id}-${subsectionIndex}-${entryIndex}`,
+        sectionId: section.id,
+        sectionTitle: section.title,
+        side: section.side,
+        sourceType: getAcademySourceType(citation, section.title),
+        title,
+        claim: entry.text,
+        explanation: `Study the claim in context, verify the citation, and explain the evidence carefully before drawing a conclusion. This lesson comes directly from the ${section.title} reference collection.`,
+        citation,
+        reviewPrompt: `Can you state the claim, cite ${citation}, and explain why it matters without relying on a quotation out of context?`,
+      };
+    })
+  )
+);
