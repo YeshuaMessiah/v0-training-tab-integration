@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
+import { AcademyLibrary } from "@/components/academy-library";
 import { Badge } from "@/components/ui/badge";
 import { 
   TRAINING_QUESTIONS, 
@@ -33,7 +34,7 @@ import {
 } from "lucide-react";
 
 type Mode = 'mcq' | 'flash' | 'fill' | 'scenario';
-type Screen = 'home' | 'quiz' | 'results';
+type Screen = 'home' | 'quiz' | 'results' | 'academy';
 
 interface TrainingStats {
   total: number;
@@ -285,6 +286,10 @@ export function TrainingScreen() {
     ? ((stats.xp - level.xp) / (nextLevelData.xp - level.xp)) * 100 
     : 100;
 
+  if (screen === 'academy') {
+    return <AcademyLibrary onBack={() => setScreen('home')} />;
+  }
+
   // HOME SCREEN
   if (screen === 'home') {
     return (
@@ -342,6 +347,10 @@ export function TrainingScreen() {
             />
           </CardContent>
         </Card>
+
+        <Button variant="outline" className="w-full border-primary/40 text-primary" onClick={() => setScreen('academy')}>
+          <BookOpen className="mr-2 h-4 w-4" /> Study the Reference Library
+        </Button>
 
         {/* Mode Selection */}
         <div role="radiogroup" aria-label="Select training mode" className="grid grid-cols-2 gap-2">
